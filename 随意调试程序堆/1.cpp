@@ -8,5 +8,11 @@ int main ()
 	std::cout<<*p<<std::endl;
 	a=5;
 	std::cout<<*p<<std::endl;
+	
+	const int *q=&a;
+	q=&b;
+	std::cout<<*q<<std::endl;
+	b=4;
+	std::cout<<*q<<std::endl;
 	return 0;
  } 
