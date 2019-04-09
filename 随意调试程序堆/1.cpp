@@ -36,5 +36,10 @@ int main ()
 //	int *const w;
 	w=s;
 	std::cout<<*w<<std::endl;
+	
+	const int *p1;
+	const int ic=4;
+	p1=&ic;
+	std::cout<<*p1<<*p1<<std::endl;
 	return 0;
  } 
