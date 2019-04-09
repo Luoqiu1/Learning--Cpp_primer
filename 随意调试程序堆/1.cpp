@@ -1,10 +1,10 @@
 #include <iostream>
 int main ()
 {
-	int a=5;
-	int *p=&a;
-	int &b=*p;
-	b=3;
-	printf("%d",a);
+	int a=1,b=5;
+	int &p=a;
+	const int &q=a;
+//	int &m=a*b;
+	const int &n=a*b;
 	return 0;
  } 
