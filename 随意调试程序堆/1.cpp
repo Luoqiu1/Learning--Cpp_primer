@@ -41,5 +41,10 @@ int main ()
 	const int ic=4;
 	p1=&ic;
 	std::cout<<*p1<<*p1<<std::endl;
+	
+	int i=0;
+	const int *p2=&i;
+	i=5;
+	std::cout<<*p2<<*p2<<std::endl;
 	return 0;
  } 
