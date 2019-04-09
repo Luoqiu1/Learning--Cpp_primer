@@ -1,10 +1,12 @@
 #include <iostream>
 int main ()
 {
-	int a=1,b=5;
-	int &p=a;
-	const int &q=a;
-//	int &m=a*b;
-	const int &n=a*b;
+	int a=4;
+	int *const p=&a;
+	int b=2;
+//	p=&b;
+	std::cout<<*p<<std::endl;
+	a=5;
+	std::cout<<*p<<std::endl;
 	return 0;
  } 
