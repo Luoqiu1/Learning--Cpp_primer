@@ -25,7 +25,7 @@ int main ()
 	c=7;
 	std::cout<<*n<<std::endl;
 	
-	const int k=5,&s=k;
+	const int k=5,*s=&k;
 //	s=4;
 	const int *w;
 	w=&c;
@@ -34,5 +34,7 @@ int main ()
 	w=&b;
 	std::cout<<*w<<std::endl;
 //	int *const w;
+	w=s;
+	std::cout<<*w<<std::endl;
 	return 0;
  } 
