@@ -19,6 +19,11 @@ int main ()
 	int null=0;
 	int *m=&null;
 //	p=&i;
-	cout<<*q; 
+//	cout<<*q; 
+
+	char *n=nullptr;
+	if(!n)
+	cout<<"3";//<<*n;
+//	cout<<c<<*n<<'1';
 	return 0;
 }
