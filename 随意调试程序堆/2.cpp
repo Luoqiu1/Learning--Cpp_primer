@@ -5,6 +5,8 @@ constexpr int go(int i,int j)
 {
 	return i+j;
 }
+
+
 int main ()
 {
 	int i=2;
