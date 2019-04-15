@@ -27,5 +27,21 @@ int main ()
 	if(!n)
 	cout<<"3";//<<*n;
 //	cout<<c<<*n<<'1';
+
+	
+//		int i=4,j=5;
+		const int v=6; 
+//		int change=2;
+//		const int *p=&i;
+//		int const *q=&j;
+		constexpr int *r=&v;////编译出错是因为！在函数体内定义的变量的地址是变化的！constexpr的意思是
+							////顶层指针！即指向的地址不变！ 而15行过了编译就是这回事！ 
+//		*p=9;
+//		p=&chang;
+//		*q=9;
+//		q=&chang;
+//		*r=9;
+//		r=&chang;
+	 
 	return 0;
 }
