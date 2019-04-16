@@ -34,7 +34,7 @@ int main ()
 //		int change=2;
 //		const int *p=&i;
 //		int const *q=&j;
-		constexpr int *r=&v;////编译出错是因为！在函数体内定义的变量的地址是变化的！constexpr的意思是
+	//	constexpr int *r=&v;////编译出错是因为！在函数体内定义的变量的地址是变化的！constexpr的意思是
 							////顶层指针！即指向的地址不变！ 而15行过了编译就是这回事！ 
 //		*p=9;
 //		p=&chang;
@@ -42,6 +42,6 @@ int main ()
 //		q=&chang;
 //		*r=9;
 //		r=&chang;
-	 
+	int null=0,*s=null; //错。。注意！C是强类型的！除了极个别的例子，指针中的两个外。。 
 	return 0;
 }
