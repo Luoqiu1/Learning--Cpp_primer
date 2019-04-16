@@ -42,6 +42,11 @@ int main ()
 //		q=&chang;
 //		*r=9;
 //		r=&chang;
-	int null=0,*s=null; //错。。注意！C是强类型的！除了极个别的例子，指针中的两个外。。 
+//	int null=0,*s=null; //错。。注意！C是强类型的！除了极个别的例子，指针中的两个外。。 
+//	int &l=34;
+	const int g=34;
+	const int &o=g;
+	int t=1;
+	const int &u=t; 
 	return 0;
 }
