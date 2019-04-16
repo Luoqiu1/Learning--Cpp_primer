@@ -5,10 +5,11 @@ constexpr int go(int i,int j)
 {
 	return i+j;
 }
-extern int u=2;
-
+//extern int u=2;
+struct text{	};
 int main ()
 {
+	struct text as;
 	int i=2;
 	const int c=2,d=5;
 	constexpr int a=go(c,d);
@@ -60,6 +61,9 @@ int main ()
 	//	j2=3;
 	//	k2=3;
 	}//
-	extern int l=2;
+//	extern int l=2; extern ÉùÃ÷ 
+	{
+		unsigned as=0;
+	 } 
 	return 0;
 }
