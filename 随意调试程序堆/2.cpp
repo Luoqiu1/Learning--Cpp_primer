@@ -5,7 +5,7 @@ constexpr int go(int i,int j)
 {
 	return i+j;
 }
-
+extern int u=2;
 
 int main ()
 {
@@ -60,5 +60,6 @@ int main ()
 	//	j2=3;
 	//	k2=3;
 	}//
+	extern int l=2;
 	return 0;
 }
