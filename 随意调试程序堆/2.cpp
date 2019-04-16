@@ -47,6 +47,18 @@ int main ()
 	const int g=34;
 	const int &o=g;
 	int t=1;
-	const int &u=t; 
+	const int &u=t;
+	{
+		const int i=42;
+		auto j=i;const auto &k=i;auto *p=&i;
+		const auto j2=i,&k2=i;
+		j=3;
+	//	k=3;
+	//	*p=2;
+		const int y=22;
+		p=&y;
+	//	j2=3;
+	//	k2=3;
+	}//
 	return 0;
 }
