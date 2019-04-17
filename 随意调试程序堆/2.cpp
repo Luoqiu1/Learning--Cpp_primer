@@ -26,7 +26,7 @@ int main ()
 
 	char *n=nullptr;
 	if(!n)
-	cout<<"3";//<<*n;
+//	cout<<"3";//<<*n;
 //	cout<<c<<*n<<'1';
 
 	
@@ -65,5 +65,7 @@ int main ()
 	{
 		unsigned as=0;
 	 } 
+	char ij='\101';
+	cout<<ij;
 	return 0;
 }
