@@ -24,9 +24,15 @@ int main ()
 		cout<<x<<' ';
 	}
 	cout<<endl;
-	const char *p="nihao";
-	p=p+2;
-	int i=-1;
-	cout<<p[i];
+//	const char *p="nihao";
+//	p=p+2;
+//	int i=-1;
+//	cout<<p[i];
+	string s2;
+	getline(cin,s2);
+	for(decltype(s2.size()) index=0;index<s2.size()&&!isspace(s2[index]);index++){
+		if(s2[index]>='a'&&s2[index]<='z')s2[index]+='A'-'a';
+	}
+	cout<<s2;
 	return 0;
 }
