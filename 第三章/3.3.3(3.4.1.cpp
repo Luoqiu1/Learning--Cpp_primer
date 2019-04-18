@@ -42,18 +42,50 @@ int main ()
 //	}
 //	for(auto &a1:s1)for(auto &c:a1)if(islower(c))c+='A'-'a';
 //	for(auto a1:s1)cout<<a1<<endl;
+
+//	vector<int> ivec;
+//	decltype(ivec.size()) a;
+//	while(cin>>a){
+//		ivec.push_back(a);
+//	}
+//	for(int x=0;x<=ivec.size()-x-1;x++){
+//		if(x!=ivec.size()-x-1){
+//			cout<<ivec[x]+ivec[ivec.size()-1-x]<<' ';
+//		}
+//		else{
+//			cout<<ivec[x];break;
+//		}
+//	}
+//	const vector<int> ivec;
+//	vector<const int> ivec2; const应像上一行语句一样，写在尖括号外面，vector前面 
+//	return 0;
+	
+//	vector<string>s1;
+//	string s;
+//	while(cin>>s){
+//		s1.push_back(s);
+//	} 
+//	for(auto &ss:s1){
+//	//	ss.
+//		for(auto it=ss.begin();it!=ss.end();it++){
+//			*it=toupper(*it);cout<<*it;
+//		}
+//		cout<<' ';
+//	}
+//	return 0;
+	
 	vector<int> ivec;
 	decltype(ivec.size()) a;
 	while(cin>>a){
 		ivec.push_back(a);
 	}
-	for(int x=0;x<=ivec.size()-x-1;x++){
-		if(x!=ivec.size()-x-1){
-			cout<<ivec[x]+ivec[ivec.size()-1-x]<<' ';
-		}
-		else{
-			cout<<ivec[x];break;
-		}
-	} 
-	return 0;
- } 
+//	for(auto it=ivec.begin();it!=ivec.end();it++){
+//		(*it)*=2;
+//	}
+	for(auto &a:ivec)a*=2;
+//	for(auto it=ivec.cbegin();it!=ivec.cend();it++){
+//		cout<<*it<<' ';
+//	}
+	for(auto a:ivec)cout<<a<<' ';
+	return  0;
+ }

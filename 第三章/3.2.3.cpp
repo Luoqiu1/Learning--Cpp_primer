@@ -36,7 +36,8 @@ int main ()
 //	cout<<s2;
 	string s1;
 	getline(cin,s1);// s1.size()类型是 string::size_type ! 
-//	for(char &ch:s1){ //!!！要注意语法格式！是 " ：" 而不是" ，"或者" ；" 
+//	for(auto &ch:s1){ //!!！要注意语法格式！是 " ：" 而不是" ，"或者" ；" 
+		//auto也要常用！   多去习惯使用 auto 和 decltype()！ 
 //		if(ch==' ')continue;
 //		ch='x';
 //	}
