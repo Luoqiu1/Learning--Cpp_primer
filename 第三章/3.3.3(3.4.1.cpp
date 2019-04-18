@@ -74,18 +74,33 @@ int main ()
 //	}
 //	return 0;
 	
-	vector<int> ivec;
-	decltype(ivec.size()) a;
-	while(cin>>a){
-		ivec.push_back(a);
-	}
+//	vector<int> ivec;
+//	decltype(ivec.size()) a;
+//	while(cin>>a){
+//		ivec.push_back(a);
+//	}
 //	for(auto it=ivec.begin();it!=ivec.end();it++){
 //		(*it)*=2;
 //	}
-	for(auto &a:ivec)a*=2;
+//	for(auto &a:ivec)a*=2;
 //	for(auto it=ivec.cbegin();it!=ivec.cend();it++){
 //		cout<<*it<<' ';
+	//	cout<<it->difference_type<<endl;
 //	}
-	for(auto a:ivec)cout<<a<<' ';
+//	for(auto a:ivec)cout<<a<<' ';
+	vector<int> ivec(11,0);
+	decltype(ivec.size()) a;
+	while(cin>>a){
+		if(a>=0&&a<=100){
+			auto it=ivec.begin();it+=a/10;
+			(*it)++;
+		}
+	}
+	for(auto x:ivec)cout<<x<<' ';
+//	for(auto it=ivec.cbegin(),it2=ivec.cend()-1;it<=it2;++it,--it2){
+//		if(it!=it2)cout<<*it+*it2<<' ';
+//		else cout<<*it;
+//	}
+	
 	return  0;
  }
