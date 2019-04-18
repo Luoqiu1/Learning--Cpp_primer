@@ -88,19 +88,40 @@ int main ()
 	//	cout<<it->difference_type<<endl;
 //	}
 //	for(auto a:ivec)cout<<a<<' ';
-	vector<int> ivec(11,0);
-	decltype(ivec.size()) a;
-	while(cin>>a){
-		if(a>=0&&a<=100){
-			auto it=ivec.begin();it+=a/10;
-			(*it)++;
-		}
-	}
-	for(auto x:ivec)cout<<x<<' ';
+
+//	vector<int> ivec(11,0);
+//	decltype(ivec.size()) a;
+//	while(cin>>a){
+//		if(a>=0&&a<=100){
+//			auto it=ivec.begin();it+=a/10;
+//			(*it)++;
+//		}
+//	}
+//	for(auto x:ivec)cout<<x<<' ';
+	
 //	for(auto it=ivec.cbegin(),it2=ivec.cend()-1;it<=it2;++it,--it2){
 //		if(it!=it2)cout<<*it+*it2<<' ';
 //		else cout<<*it;
 //	}
-	
+	vector<int> ivec;
+	int a;
+	int i=0;
+	for(;i<5;i++){
+		cin>>a;ivec.push_back(a);
+	}
+//	sort(&ivec[0],&ivec[0]+ivec.size());
+//	unsigned loc;
+	int x;
+	cin>>x;
+	auto beg=ivec.cbegin(),end=ivec.cend(),mid=beg+(end-beg)/2;
+								// mid=(end+beg)/2 是有问题的！  vector并没有定义迭代器之间的加法！ 
+	for(;mid!=end&&*mid!=x;){
+		if(x<*mid)end=mid;
+		else beg=mid+1;
+		mid=beg+(end-beg)/2; ////////////刷新中点位置啊！ 仔细 
+	}
+	auto jugde=mid-ivec.cbegin()+1;
+	if(jugde>ivec.size())cout<<"没有";
+	else cout<<mid-ivec.cbegin()+1;
 	return  0;
  }
