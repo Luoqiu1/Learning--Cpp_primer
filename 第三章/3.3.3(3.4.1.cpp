@@ -103,8 +103,14 @@ int main ()
 //		if(it!=it2)cout<<*it+*it2<<' ';
 //		else cout<<*it;
 //	}
+//	int buf_size=1024;
+//	int ia[buf_size];
+//	ia[1027]=4;
+//	cout<<ia[1027];
 	vector<int> ivec;
 	int a;
+	decltype(a) b[4]{1,2,3}; 
+//	cout<<b[2];
 	int i=0;
 	for(;i<5;i++){
 		cin>>a;ivec.push_back(a);
