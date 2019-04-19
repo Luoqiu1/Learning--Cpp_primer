@@ -74,14 +74,20 @@ int main ()
 //		++cp;
 //	}
 	
-	char s1[]{"nihao"},s2[]{"ganma"};
+//	char s1[]{"nihao"},s2[]{"ganma"};
 //	cout<<(s1>s2);
 //	char s11[]{"ganma"},s22[]{"nihao"};
 //	cout<<strcmp(s11,s22);
-	char s3[30];
-	strcpy(s3,s1);strcat(s3,s2);
+//	char s3[30];
+//	strcpy(s3,s1);strcat(s3,s2);
 //	strcat(s3,s1);strcat(s3,s2);
-	cout<<s3;
-		
+//	cout<<s3;
+	int a[13]{1,2,3,5,7,8,123,321};
+	vector<int> ivec(begin(a),end(a));
+	for(auto i:ivec)cout<<i<<' ';
+	int i=0;
+	int b[13]{0};
+	for(auto x:ivec)b[i++]=x;cout<<endl;
+	for(auto i:b)cout<<i<<' ';
 	return 0;
 }
