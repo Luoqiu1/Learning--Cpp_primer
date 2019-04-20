@@ -88,16 +88,31 @@ int main ()
 //	for(auto i:b)cout<<i<<' ';
 	
 	int ia[3][4]={0,1,2,3,4,5,6,7,8,9,10,11};
-//	for(int (&i)[4]:ia)for(int x:i)cout<<x<<' ';cout<<endl;
-//	for(int i=0;i<3;i++)for(int j=0;j<4;j++)cout<<ia[i][j]<<' ';cout<<endl;
-//	for(int (*p)[4]=ia;p<ia+3;p++)for(int *q=*p;q<*p+4;q++)cout<<*q<<' ';cout<<endl;
+	for(auto &i:ia)for(auto x:i)cout<<x<<' ';cout<<endl;
+	for(auto i=0;i<3;i++)for(auto j=0;j<4;j++)cout<<ia[i][j]<<' ';cout<<endl;
+	for(auto p=ia;p<ia+3;p++)for(auto q=*p;q<*p+4;q++)cout<<*q<<' ';cout<<endl;
 ////	for(int p[4]=ia;p!=end(ia);p++)for(int q=*p;q!=end(*p);q++)cout<<*q<<' ';cout<<endl;
 //	for(int (*p)[4]=ia;p!=end(ia);p++)for(int *q=*p;q!=end(*p);q++)cout<<*q<<' ';cout<<endl;
 
 //	int (*p)[4]=(ia+2);cout<<*(*p+3);
-	for(int (&a)[4]:ia)for(int p:a)cout<<p<<' ';cout<<endl;
-	for(int i=0;i<3;i++)for(int j=0;j<4;j++)cout<<ia[i][j]<<' ';cout<<endl;
-	for(int (*p)[4]=ia;p<ia+3;p++)for(int *q=*p;q<*p+4;q++)cout<<*q<<' ';cout<<endl; 
+//	for(int (&a)[4]:ia)for(int p:a)cout<<p<<' ';cout<<endl;
+//	for(int i=0;i<3;i++)for(int j=0;j<4;j++)cout<<ia[i][j]<<' ';cout<<endl;
+
+//		对比一二行与三四行，一二行可以几乎不用思考！
+//		只需注意要利用 & 来防止编译器自动将数组名转化为 指针 即可！ 
+//		for(auto &i:ia)for(auto x:i)cout<<x<<' ';cout<<endl;//
+//		for(auto p=ia;p<ia+3;p++)for(auto q=*p;q<*p+4;q++)cout<<*q<<' ';cout<<endl;//
+//		for(int (&a)[4]:ia)for(int p:a)cout<<p<<' ';cout<<endl;
+//		for(int (*p)[4]=ia;p<ia+3;p++)for(int *q=*p;q<*p+4;q++)cout<<*q<<' ';cout<<endl; // 
+
+/*1*///	for(int *p=ia;p<ia+3;p++)for(int *q=*p;q<*p+4;q++)cout<<*q<<' ';cout<<endl; //
+/*2*///	for(int (*p)[4]=ia;p<ia+3;p++)for(int *q=*p;q<*p+4;q++)cout<<*q<<' ';cout<<endl; // 
+//		对比 1，2 再次认识到指针赋值时，类型匹配的重要性！
+//		ia是数组的名字，在程序使用多维数组的名字时，会自动将其转化为指向数组首元素的指针！
+//		而ia数组首元素的指针，指向了一个二维数组！含有四个int型变量的二维数组！
+//		故其指针的类型应为：int (*p)[4] !
+//		而这些可以通过 auto 轻松交给编译器完成，极大的简化了思考且降低了错误发生的几率！ 
 	
+
 	return 0;
 }
