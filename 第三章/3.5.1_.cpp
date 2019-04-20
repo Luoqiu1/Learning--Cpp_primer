@@ -4,10 +4,6 @@
 #include <iterator>
 #include <cstring>
 using namespace std;
-int text[88];
-string sa[10];
-int ia[10];
-const char ca[]={'h','e','l','l','o'},cb[]={'h','e','l','l','o'},cc[]={'h','e','l','l','o'};
 int main ()
 {
 //	string sa2[10];
@@ -82,12 +78,26 @@ int main ()
 //	strcpy(s3,s1);strcat(s3,s2);
 //	strcat(s3,s1);strcat(s3,s2);
 //	cout<<s3;
-	int a[13]{1,2,3,5,7,8,123,321};
-	vector<int> ivec(begin(a),end(a));
-	for(auto i:ivec)cout<<i<<' ';
-	int i=0;
-	int b[13]{0};
-	for(auto x:ivec)b[i++]=x;cout<<endl;
-	for(auto i:b)cout<<i<<' ';
+
+//	int a[13]{1,2,3,5,7,8,123,321};
+//	vector<int> ivec(begin(a),end(a));
+//	for(auto i:ivec)cout<<i<<' ';
+//	int i=0;
+//	int b[13]{0};
+//	for(auto x:ivec)b[i++]=x;cout<<endl;
+//	for(auto i:b)cout<<i<<' ';
+	
+	int ia[3][4]={0,1,2,3,4,5,6,7,8,9,10,11};
+//	for(int (&i)[4]:ia)for(int x:i)cout<<x<<' ';cout<<endl;
+//	for(int i=0;i<3;i++)for(int j=0;j<4;j++)cout<<ia[i][j]<<' ';cout<<endl;
+//	for(int (*p)[4]=ia;p<ia+3;p++)for(int *q=*p;q<*p+4;q++)cout<<*q<<' ';cout<<endl;
+////	for(int p[4]=ia;p!=end(ia);p++)for(int q=*p;q!=end(*p);q++)cout<<*q<<' ';cout<<endl;
+//	for(int (*p)[4]=ia;p!=end(ia);p++)for(int *q=*p;q!=end(*p);q++)cout<<*q<<' ';cout<<endl;
+
+//	int (*p)[4]=(ia+2);cout<<*(*p+3);
+	for(int (&a)[4]:ia)for(int p:a)cout<<p<<' ';cout<<endl;
+	for(int i=0;i<3;i++)for(int j=0;j<4;j++)cout<<ia[i][j]<<' ';cout<<endl;
+	for(int (*p)[4]=ia;p<ia+3;p++)for(int *q=*p;q<*p+4;q++)cout<<*q<<' ';cout<<endl; 
+	
 	return 0;
 }
