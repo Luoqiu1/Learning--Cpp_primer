@@ -33,15 +33,22 @@ int main()
 //	for(auto &x:ivec)if(x%2==1)x*=2;
 //	for(auto x:ivec)cout<<x<<' ';
 	
-	int grade;while(cin>>grade){
-//	string s1=grade>75?grade>90?"high pass":"low pass":grade>=60?"pass":"fail";cout<<s1<<endl;
-	string s1;if(grade>=60){
-		if(grade>75){
-			if(grade>90)s1="high pass";
-			else s1="low pass";
-		}
-		else s1="pass";
-	}
-	else s1="fail";cout<<s1<<endl;}
+//	int grade;while(cin>>grade){
+////	string s1=grade>75?grade>90?"high pass":"low pass":grade>=60?"pass":"fail";cout<<s1<<endl;
+//	string s1;if(grade>=60){
+//		if(grade>75){
+//			if(grade>90)s1="high pass";
+//			else s1="low pass";
+//		}
+//		else s1="pass";
+//	}
+//	else s1="fail";cout<<s1<<endl;}
+
+	unsigned quiz1=0;
+	quiz1|=1ul<<27;if(quiz1>>26==2)cout<<"yes"<<endl;
+	quiz1&=~(1ul<<27);cout<<quiz1<<endl;
+	unsigned long u11=3,u12=7;
+	cout<<(u11&u12)<<' '<<(u11|u12)<<" "<<(u11&&u12)<<' '<<(u11||u12);
+	
 	return 0;
  }
