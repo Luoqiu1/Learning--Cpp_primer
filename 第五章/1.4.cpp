@@ -32,10 +32,14 @@ int main ()
 //	}
 	
 	char ch;unsigned otherCnt=0;unsigned aCnt=0;unsigned eCnt=0;unsigned iCnt=0;unsigned oCnt=0;unsigned uCnt=0;
+	unsigned spaceCnt=0;unsigned tCnt=0;unsigned nCnt=0;
 //	while(cin>>ch){
 //		if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')vowelCnt++;
 //	}
 //	cout<<vowelCnt<<endl;
+
+//	while(scanf("%c",&ch)!=EOF){
+//	while(cin>>noskipws>>ch){//no skip whitespace ! Ñ§µ½ÁË 
 	while(cin>>ch){
 		if(ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U')ch+='a'-'A';
 		switch(ch){
@@ -44,10 +48,14 @@ int main ()
 			case'i':++iCnt;break;
 			case'o':++oCnt;break;
 			case'u':++uCnt;break;
+			case' ':++spaceCnt;break;
+			case'\t':++tCnt;break;
+			case'\n':++nCnt;break;
 			default:++otherCnt;
 		}
 	}
-	cout<<"a£º"<<aCnt<<' '<<"e£º"<<eCnt<<' '<<"i£º"<<iCnt<<' '<<"o£º"<<oCnt<<' '<<"u£º"<<uCnt<<' '<<"other£º"<<otherCnt<<' ';
+	cout<<"a£º"<<aCnt<<' '<<"e£º"<<eCnt<<' '<<"i£º"<<iCnt<<' '<<"o£º"<<oCnt<<' '
+	<<"u£º"<<uCnt<<' '<<"t£º"<<tCnt<<' '<<"n£º"<<nCnt<<' '<<"space£º"<<spaceCnt<<' '<<"other£º"<<otherCnt<<' ';
 
 	return 0;
  } 
