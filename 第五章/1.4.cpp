@@ -32,20 +32,23 @@ int main ()
 //	}
 	
 	char ch;unsigned otherCnt=0;unsigned aCnt=0;unsigned eCnt=0;unsigned iCnt=0;unsigned oCnt=0;unsigned uCnt=0;
-	unsigned spaceCnt=0;unsigned tCnt=0;unsigned nCnt=0;
+	unsigned spaceCnt=0;unsigned tCnt=0;unsigned nCnt=0;unsigned ffCnt=0;unsigned fiCnt=0;unsigned flCnt=0;
 //	while(cin>>ch){
 //		if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')vowelCnt++;
 //	}
 //	cout<<vowelCnt<<endl;
 
 //	while(scanf("%c",&ch)!=EOF){
-//	while(cin>>noskipws>>ch){//no skip whitespace ! 学到了 
-	while(cin>>ch){
+//	while(cin>>ch){
+	char pre; 
+	while(cin>>noskipws>>ch){//no skip whitespace ! 学到了 
 		if(ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U')ch+='a'-'A';
 		switch(ch){
 			case'a':++aCnt;break;
 			case'e':++eCnt;break;
-			case'i':++iCnt;break;
+			case'i':++iCnt;if(pre=='f')++fiCnt;break;
+			case'f':if(pre=='f')++ffCnt;break;
+			case'l':if(pre=='f')++flCnt;break;
 			case'o':++oCnt;break;
 			case'u':++uCnt;break;
 			case' ':++spaceCnt;break;
@@ -53,9 +56,11 @@ int main ()
 			case'\n':++nCnt;break;
 			default:++otherCnt;
 		}
+		pre=ch;
 	}
 	cout<<"a："<<aCnt<<' '<<"e："<<eCnt<<' '<<"i："<<iCnt<<' '<<"o："<<oCnt<<' '
-	<<"u："<<uCnt<<' '<<"t："<<tCnt<<' '<<"n："<<nCnt<<' '<<"space："<<spaceCnt<<' '<<"other："<<otherCnt<<' ';
+	<<"u："<<uCnt<<' '<<"t："<<tCnt<<' '<<"n："<<nCnt<<' '<<"space："<<spaceCnt<<' '<<"other："<<otherCnt<<' '
+	<<"ff："<<ffCnt<<' '<<"fi："<<fiCnt<<' '<<"fl："<<flCnt<<' ';
 
 	return 0;
  } 
