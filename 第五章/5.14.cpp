@@ -69,22 +69,38 @@ int main ()
 //		cout<<"两者非前缀关系";
 //	}
 		
-//	for(auto x:{"nihao","xixi","chongya"})cout<<x<<' '; 
+//	for(auto x:{"nihao","xixi","chongya"}){
+//		if(x=="xixi")continue;cout<<x<<' ';
+//	}
 
-	string s1,s2;
-	do{
-		printf("请输入两个string串：");
-		cin>>s1>>s2;
-		if(s2=="stop"||s1=="stop"){
-			cout<<"the end";break;
-		}
-		if(cin){
-			cout<<"输出较大的那个串：";
-			if(s1.size()>s2.size())cout<<s1;else cout<<s2;cout<<endl;
-		}
-		cin.clear();
-//	}while(s2!="stop");
-	}while(cin); 
+//	string s1,s2;
+//	do{
+//		printf("请输入两个string串：");
+//		cin>>s1>>s2;
+//		if(s2=="stop"||s1=="stop"){
+//			cout<<"the end";break;
+//		}
+//		if(cin){
+//			cout<<"输出较大的那个串：";
+//			if(s1.size()>s2.size())cout<<s1;else cout<<s2;cout<<endl;
+//		}
+//		cin.clear();
+////	}while(s2!="stop");
+//	}while(cin); 
+	
+	string s1,pre;
+	cin>>pre;
+	bool flag=false;
+	while(cin>>s1){
+		if(isalpha(s1[0])&&s1[0]==toupper(s1[0])){
+			if(s1==pre){
+				flag=!flag;break;
+			}
+			pre=s1;
+		} 
+	}
+	if(flag)cout<<"连续重复大写开头单词为："<<s1;
+	else cout<<"无连续重复大写开头单词";
 	
 	return 0;
 }
