@@ -17,14 +17,28 @@ int main()
 //	else std::cout<<"Error!";
 	
 	Sales_data item1,item2;
-	while(cin>>item1>>item2){
+	while(cin>>item1.bookNo>>item2.bookNo){
+		
 		try{
-			
+			if(item1.bookNo!=item2.bookNo)
+				throw runtime_error("Data must refer to same ISBN");
+			cout<<"Equal"<<endl;
 		}catch(runtime_error err){
-			cout<<err.what()<<"\nTry Again?Enter Y or N"<<endl;
+	//	}catch(range_error err){
+			cout<<err.what() //err.what() 即初始化runtime_error对象时的初始值 
+							//此处为  "Data must refer to same ISBN"
+			<<"\nTry Again?Enter y or n"<<endl;
 			char c;
 			cin>>c;
 			if(!cin||c=='n')break;
+		//	if(c=='n')break; //该条语句用ctrl z也能退出 
 		}
-	} 
+
+//		if(item1.bookNo!=item2.bookNo)
+//				throw runtime_error("Data must refer to same ISBN");
+//			cout<<"Equal"<<endl;
+//		
+
+	}
+	return 0;
 }
