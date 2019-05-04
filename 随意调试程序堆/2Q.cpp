@@ -6,7 +6,7 @@ int main ()
 	int r,y,g;
 	int n;
 	int k,t;
-	int ans=0;//进行到当前道路下的总时间
+	long long ans=0;//进行到当前道路下的总时间
 	cin>>r>>y>>g;cin>>n;
 	int loop=r+y+g;//红黄绿三灯循环一次的时间 
 	while(n--){
@@ -20,14 +20,17 @@ int main ()
 			}
 		}
 		else{
-	//		int cur=(T+t)%loop;//表示当下显示牌的时间（未换算为具体某灯，是循环时间内的绝对时间） 
-							//基于的是当下指示灯颜色下的绝对时间！
 			int cur=ans%loop;
 			if(k==0){//无灯，直接加上耗时 
 				ans+=t;
 			}
+//			if(ans-t<=0){
+//				if(k==1) ans+=(t-ans);
+//				else if(k==3) ans+=0;
+//				else ans+=(t-ans+r); 
+//			}
 			else if(k==1){//红灯 
-				if(cur>=t){//超过了红灯亮起时间 
+				if(cur>=t){//超过了红灯亮起时间
 					if(cur-t>=g){//超过了绿灯亮起时间 
 						if(cur-t-g>=y){//超过了黄灯亮起时间
 							ans+=r-(cur-t-g-y);
@@ -45,7 +48,7 @@ int main ()
 			}
 			else if(k==2){//黄灯 
 				if(cur>=t){//超过了黄灯亮起时间 
-					if(cur-t-r<=0){//处于红灯期 
+					if(cur-t-r<0){//处于红灯期 
 						ans+=r-(cur-t);
 					}
 					else{//绿灯区 
