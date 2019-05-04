@@ -79,7 +79,7 @@ int main ()
 					curpoint++;
 					curS="";
 				}
-				curS+=x;
+				else curS+=x;
 			}//结束时还有最后一串数字没有处理 
 			curip.s[curpoint]=curS;
 			nowip+=goNum(curS);
@@ -97,7 +97,7 @@ int main ()
 					curpoint++;
 					curS="";
 				}
-				curS+=x;
+				else curS+=x;
 			}//结束时还有最后一串数字没有处理 
 			curip.s[curpoint]=curS;
 			nowip+=goNum(curS);
@@ -117,48 +117,55 @@ int main ()
 //	for(auto x:ivec){
 //		cout<<x.frontip<<" ";
 //	}
-	unsigned int i=0;
 	for(auto it=ivec.begin();it!=ivec.end();){
-		if(it+1!=ivec.end()){
+		if(ivec.end()-it>1){
 		//	cout<<"vec "<<(ivec[i].frontip>>(32-ivec[i].len)==ivec[i+1].frontip>>(32-ivec[i+1].len))<<endl;
 		//	cout<<"vec: "<<ivec[i].frontip<<' '<<ivec[i+1].frontip<<endl;
-			if(ivec[i].frontip>>(32-ivec[i].len)==ivec[i+1].frontip>>(32-ivec[i].len)&&ivec[i].len!=ivec[i+1].len){//后面元素是前面元素的匹配集子集 
+		//	if(ivec[i].frontip>>(32-ivec[i].len)==ivec[i+1].frontip>>(32-ivec[i].len)&&ivec[i].len!=ivec[i+1].len){//后面元素是前面元素的匹配集子集 
+			if((*it).frontip>>(32-(*it).len)==(*(it+1)).frontip>>(32-(*it).len)&&(*it).len<(*(it+1)).len||(*it).frontip==(*(it+1)).frontip&&(*it).len==(*(it+1)).len){
 				it=ivec.erase(it+1);
+				if(it-ivec.begin()>=2){
+					it=it-2;
+				}
 			}
-			else ++it,++i;
+			else ++it;
 		}
-		else ++it,++i;//下一次判断条件时it==ed，结束循环 
+		else ++it;//下一次判断条件时it==ed，结束循环 
 	}
 //	cout<<"siezof now "<<ivec.size()<<endl;
-	i=0;
-	for(auto it=ivec.begin(),ed=ivec.end();it!=ed;){
-		if(it+1!=ed){
-			if(ivec[i].len==ivec[i+1].len){//相邻两元素的前缀相同 
-				ip newip=ivec[i];--newip.len;
-				if(!((newip.frontip>>ivec[i].len)&1)){//若合法 
-				//	cout<<"here1"<<endl;
-				//	if(ivec[i].frontip>>(32-(ivec[i].len-1))==ivec[i+1].frontip>>(32-(ivec[i].len-1))){
-				//	cout<<"ivec1: "<<(ivec[i].frontip>>(32-(ivec[i].len-1)))<<" ivec2: "<<(ivec[i+1].frontip>>(32-(ivec[i].len-1)))<<endl;
-				//	if(ivec[i].frontip>>(32-(ivec[i].len-1))==ivec[i+1].frontip>>(32-(ivec[i].len-1))){
-					if(newip.frontip>>(32-newip.len)==ivec[i+1].frontip>>(32-newip.len)){
+	for(auto it=ivec.begin();it!=ivec.end();){
+		if(ivec.end()-it>1){
+		//	if(ivec[i].len==ivec[i+1].len){//相邻两元素的前缀相同 
+			if((*it).len==(*(it+1)).len){
+			//	ip newip=ivec[i];--newip.len;
+				ip newip=(*it);--newip.len;
+			//	if(!((newip.frontip>>ivec[i].len)&1)){//若合法 
+			//	cout<< (newip.frontip>>(*it).len);
+				if(!((newip.frontip>>(32-(*it).len))&1)){
+					if(newip.frontip>>(32-newip.len)==(*(it+1)).frontip>>(32-newip.len)){
 				//		cout<<"here2"<<endl;
+						(*it)=newip;
 						it=ivec.erase(it+1);
-						if((it-1)!=ivec.begin())--it;
-						ivec[i]=newip;
+						if(it-ivec.begin()>=2){
+							it=it-2;
+						}
 					}
-					else ++it,++i;
+					else ++it;
 				}
-				else ++it,++i;
+				else ++it;
 			}
-			else ++it,++i;
+			else ++it;
 		}
-		else ++it,++i;//下一次判断条件时it==ed，结束循环 
+		else ++it;//下一次判断条件时it==ed，结束循环 
 	}
 //	cout<<"sizeof now "<<ivec.size()<<endl;
 	for(auto it=ivec.begin(),ed=ivec.end();it!=ed;++it){
+	//	cout<<"Here1"; 
 		for(int i=0;i<4;i++){
 			if((*it).s[i]=="")cout<<0;
-			else cout<<(*it).s[i];if(i!=3)cout<<'.';else cout<<'/';
+			else cout<<(*it).s[i];
+			if(i!=3)cout<<'.';
+			else cout<<'/';
 		}
 		cout<<(*it).len;
 		cout<<endl;

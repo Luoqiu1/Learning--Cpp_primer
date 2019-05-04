@@ -47,6 +47,7 @@ int second(){//µÚ¶þ²½
 			i--;
 		}else l=i;
 	}
+//	cout<<"sizeof now "<<p.size()<<endl;
 	return 1;
 }
 int third(){
