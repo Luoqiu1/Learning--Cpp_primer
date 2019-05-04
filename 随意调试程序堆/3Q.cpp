@@ -4,14 +4,15 @@
 #include <algorithm>
 using namespace std;
 typedef struct ip{
-	unsigned int frontip;//ip地址 
+	vector<string> s{"","","",""};//非前缀部分 
+	long long frontip;//ip地址 
 	unsigned int len;//前缀
 	//例如 101.6.6.0/24    ip地址为101.6.6.0所对应的十进制数
 	//                     前缀为 24  
 }ip;
-unsigned int goNum(string s)
+long long goNum(string s)
 {
-	unsigned int ans=0;
+	long long ans=0;
 	for(auto x:s){
 		ans*=10;
 		switch(x){
@@ -30,14 +31,6 @@ unsigned int goNum(string s)
 	return ans;
 }
 bool cmp(const ip a,const ip b)
-{
-	return a.frontip<b.frontip;
-}
-bool cmp2(const ip a,const ip b)
-{
-	if(a.frontip==b.frontip)return a.len<b.len;
-}
-bool cmp3(const ip a,const ip b)
 {
 	if(a.frontip==b.frontip)return a.len<b.len;
 	return a.frontip<b.frontip;
@@ -62,7 +55,8 @@ int main ()
 		}
 		//下面先对ip地址初始化 
 		if(!pointCnt&&!iflen){//没有'.'也没有前缀len
-			curip.frontip=goNum(curS);//直接转化 
+			curip.s[0]=curS;
+			curip.frontip=goNum(curS)*num[3];//直接转化 
 		}
 		else if(!pointCnt&&iflen){//没有'.'但有前缀len 
 			string curS;
@@ -70,36 +64,41 @@ int main ()
 				if(x=='/')break;
 				curS+=x;
 			}
-			curip.frontip=goNum(curS);//直接转化
+			curip.s[0]=curS;
+			curip.frontip=goNum(curS)*num[3];//直接转化
 		}
 		else if(pointCnt&&!iflen){//有'.'没有前缀
 			string curS; 
-			unsigned int curpoint=0;
-			unsigned int nowip=0;
+			long long curpoint=0;
+			long long nowip=0;
 			for(auto x:s){
 				if(x=='.'){
+					curip.s[curpoint]=curS;
 					nowip+=goNum(curS)*num[pointCnt-curpoint];
 					curpoint++;
 					curS="";
 				}
 				curS+=x;
 			}//结束时还有最后一串数字没有处理 
+			curip.s[curpoint]=curS;
 			nowip+=goNum(curS);
 			curip.frontip=nowip;
 		}
 		else if(pointCnt&&iflen){//有'.'有前缀
 			string curS; 
-			unsigned int curpoint=0;
-			unsigned int nowip=0;
+			long long curpoint=0;
+			long long nowip=0;
 			for(auto x:s){
 				if(x=='/')break; 
 				if(x=='.'){
+					curip.s[curpoint]=curS;
 					nowip+=goNum(curS)*num[pointCnt-curpoint];
 					curpoint++;
 					curS="";
 				}
 				curS+=x;
 			}//结束时还有最后一串数字没有处理 
+			curip.s[curpoint]=curS;
 			nowip+=goNum(curS);
 			curip.frontip=nowip;
 		}
@@ -112,29 +111,52 @@ int main ()
 		}
 		ivec.push_back(curip);
 	}
-//	sort(ivec.begin(),ivec.end(),cmp);//ip地址为第一关键字先排序 
-//	sort(ivec.begin(),ivec.end(),cmp2);//前缀长度为第二关键字后排序 
-	sort(ivec.begin(),ivec.end(),cmp3);//ip地址为第一关键字先排序 前缀长度为第二关键字后排序
+	sort(ivec.begin(),ivec.end(),cmp);//ip地址为第一关键字先排序 前缀长度为第二关键字后排序
+	for(auto x:ivec){
+		cout<<x.frontip<<" ";
+	}
 	unsigned int i=0;
 	for(auto it=ivec.begin();it!=ivec.end();){
 		if(it+1!=ivec.end()){
-			if(ivec[i].frontip>>32-ivec[i].len==ivec[i+1].frontip>>32-ivec[i+1].len){//后面元素是前面元素的匹配集子集 
-				it=ivec.erase(it);
+		//	cout<<"vec "<<(ivec[i].frontip>>(32-ivec[i].len)==ivec[i+1].frontip>>(32-ivec[i+1].len))<<endl;
+			cout<<"vec: "<<ivec[i].frontip<<' '<<ivec[i+1].frontip<<endl;
+			if(ivec[i].frontip>>(32-ivec[i].len)==ivec[i+1].frontip>>(32-ivec[i].len)){//后面元素是前面元素的匹配集子集 
+				it=ivec.erase(it+1);
 			}
 			else ++it,++i;
 		}
 		else ++it,++i;//下一次判断条件时it==ed，结束循环 
 	}
+	cout<<"siezof now "<<ivec.size()<<endl;
 	i=0;
 	for(auto it=ivec.begin(),ed=ivec.end();it!=ed;){
 		if(it+1!=ed){
 			if(ivec[i].len==ivec[i+1].len){//相邻两元素的前缀相同 
 				ip newip;newip.frontip=ivec[i].frontip;newip.len=ivec[i].len-1;
-				
-		//		it=ivec.erase(it);
+				if((newip.frontip>>ivec[i].len)&1){//若合法 
+					cout<<"here1"<<endl;
+				//	if(ivec[i].frontip>>(32-(ivec[i].len-1))==ivec[i+1].frontip>>(32-(ivec[i].len-1))){
+					cout<<"ivec1: "<<(ivec[i].frontip>>(32-(ivec[i].len-1)))<<" ivec2: "<<(ivec[i+1].frontip>>(32-(ivec[i].len-1)))<<endl;
+					if(ivec[i].frontip>>(32-(ivec[i].len-1))==ivec[i+1].frontip>>(32-(ivec[i].len-1))){
+						cout<<"here2"<<endl;
+						it=ivec.erase(it+1);
+						if((it-1)!=ivec.begin())--it;
+						ivec[i]=newip;
+					}
+					else ++it,++i;
+				}
+				else ++it,++i;
 			}
 			else ++it,++i;
 		}
 		else ++it,++i;//下一次判断条件时it==ed，结束循环 
 	}
+	cout<<"sizeof now "<<ivec.size()<<endl;
+//	for(auto x:ivec){
+//		for(auto y:x.s){
+//			cout<<y;
+//		}
+//		cout<<endl;
+//	}
+	return 0;
 }
