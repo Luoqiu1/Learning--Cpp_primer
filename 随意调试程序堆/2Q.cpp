@@ -5,7 +5,7 @@ int main ()
 {
 	int r,y,g;
 	int n;
-	int k,t;
+	long long k,t;
 	long long ans=0;//进行到当前道路下的总时间
 	cin>>r>>y>>g;cin>>n;
 	int loop=r+y+g;//红黄绿三灯循环一次的时间 
