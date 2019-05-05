@@ -117,6 +117,7 @@ int main ()
 //	for(auto x:ivec){
 //		cout<<x.frontip<<" ";
 //	}
+	bool flag2=true;
 	for(auto it=ivec.begin();it!=ivec.end();){
 		if(ivec.end()-it>1){
 		//	cout<<"vec "<<(ivec[i].frontip>>(32-ivec[i].len)==ivec[i+1].frontip>>(32-ivec[i+1].len))<<endl;
@@ -127,12 +128,16 @@ int main ()
 				if(it-ivec.begin()>=2){
 					it=it-2;
 				}
+				else if(ivec.size()==2&&flag2){
+					it=it-2;flag2=!flag2;
+				}
 			}
 			else ++it;
 		}
 		else ++it;//下一次判断条件时it==ed，结束循环 
 	}
 //	cout<<"siezof now "<<ivec.size()<<endl;
+	bool flag=true;
 	for(auto it=ivec.begin();it!=ivec.end();){
 		if(ivec.end()-it>1){
 		//	if(ivec[i].len==ivec[i+1].len){//相邻两元素的前缀相同 
@@ -148,6 +153,9 @@ int main ()
 						it=ivec.erase(it+1);
 						if(it-ivec.begin()>=2){
 							it=it-2;
+						}
+						else if(ivec.size()==2&&flag){
+							it=it-2;flag=!flag; 
 						}
 					}
 					else ++it;
