@@ -11,6 +11,7 @@ int main (int argc,char **argv)
 {
 	std::string s1,s2;
 	std::cin>>s1>>s2;
+	size_t a=2;
 	if(s1!=s2){
 		print({"Yes,GO!",s1,s2});
 	}
