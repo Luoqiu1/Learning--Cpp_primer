@@ -23,7 +23,7 @@ void print(vector<int>::const_iterator beg,vector<int>::const_iterator end)
 		print(++beg,end);
 	}
 }
-int main (int argc,char **argv)
+int main (int argc,char **argv)//(int argc,char *argv[]) 
 {
 	int ia[10];
 	for(int i=0;i!=10;++i)get(ia,i)=i;
