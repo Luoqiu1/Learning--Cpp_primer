@@ -16,9 +16,13 @@ string &shorterString(string &s1,string &s2)
 int main ()
 {
 	string s1,s2;
+	string sss();//sss()是什么初始化方式。。
+	cout<<endl<<"here"<<sss;
 	const string s3{"s3o``"},s4{"s4o"};
 	cin>>s1>>s2;
 	const string cs=shorterString(s3,s4);string ncs=shorterString(s1,s2);
 	cout<<cs<<endl<<ncs;
+	string ss();
+	cout<<endl<<"here"<<ss;
 	return 0;
 }
