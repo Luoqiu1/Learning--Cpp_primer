@@ -27,14 +27,15 @@ int main ()
 {
 	void (*f)(int)=func;
 	
-	vector<int (*)(int,int)> x;
-	vector<decltype(Go)*> xx;
-	x.push_back(Go1);x.push_back(Go2);x.push_back(Go3);x.push_back(Go4);
+	vector<int (*)(int,int)> x{Go1,Go2,Go3,Go4};
+	vector<decltype(Go)*> xx{&Go1,&Go2,&Go3,&Go4};//列表初始化别忘了！ 
+//	x.push_back(Go1);x.push_back(Go2);x.push_back(Go3);x.push_back(Go4);
 	for(auto i:x){
-		cout<<i(10,5)<<' ';
+	//	cout<<i(10,5)<<' ';
+		cout<<(*i)(10,5)<<' ';
 	}
 	cout<<endl;
-	xx.push_back(Go1);xx.push_back(Go2);xx.push_back(Go3);xx.push_back(Go4);
+//	xx.push_back(Go1);xx.push_back(Go2);xx.push_back(Go3);xx.push_back(Go4);
 	for(auto i:xx){
 		cout<<i(10,5)<<' ';
 	}
