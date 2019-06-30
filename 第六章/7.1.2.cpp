@@ -3,7 +3,8 @@
 using namespace std;
 struct Sales_data{
 	string bookNo;
-	unsigned units_sold=0;
+	unsigned cnt=0;
+	double units_sold=0.0;
 	double revenue=0.0;
 	string isbn() const{return bookNo;}
 	Sales_data& combine(const Sales_data &rhs)
@@ -19,13 +20,25 @@ struct Sales_data{
 		
 		//其实知道了this这个隐式声明的指针后，可以通过this来提升代码速度
 		//对this使用->会出来参数列表！直接选择，后面对应即可，不需要再翻上去了 
-		this->units_sold+=rhs.units_sold;
+		this->cnt+=rhs.cnt;
 		this->revenue+=rhs.revenue;
-		
+		this->units_sold=revenue/cnt;
 		return *this;
 	}
-
 };
+istream& read(istream& in,Sales_data &s)
+{
+	in>>s.bookNo>>s.cnt>>s.units_sold;
+	s.revenue=s.cnt*s.units_sold; 
+	return in;
+}
+ostream& print(ostream& out,const Sales_data &s)
+{
+	out<<"书的编号为："<<s.bookNo<<"数量为："<<s.cnt<<"单价为："<<s.units_sold<<"总价为："<<s.revenue<<endl;
+	return out;
+}
+
+
 //Sales_data& Sales_data::combine(const Sales_date &rhs)
 //{
 //	this->units_sold;
@@ -36,5 +49,19 @@ struct Sales_data{
 void textf(std::istream);
 int main (int argc,char **argv)
 {
+	Sales_data total;
+	while(read(cin,total)){
+		Sales_data trans;
+		while(read(cin,trans)){
+			if(total.isbn()==trans.isbn()){
+				total.combine(trans);
+			}
+			else{
+				print(cout,total);
+				total=trans;
+			}
+		}
+		print(cout,total);
+	}
 	return 0;
 }
