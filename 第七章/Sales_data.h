@@ -10,10 +10,16 @@ struct Sales_data{
 						//因为没有提供不含参数的构造函数！（当没有显示定义函数的时候，编译器会自动定义合成的默认构造函数！)
 						//构造函数也是函数，用函数的方法来看待！
 						//形参数量，形参类型等！ 
+//	Sales_data():bookNo("00001"),cnt(1),units_sold(0),revenue(0){}
 	Sales_data(const string &s):bookNo(s){}
 	Sales_data(const string &s,const unsigned &cntt,const double &units_soldd):bookNo(s),cnt(cntt),
 units_sold(units_soldd),revenue(cntt*units_soldd){}
-	Sales_data(istream &is); 
+//	Sales_data(istream &is); 
+	Sales_data(istream &is)
+	{
+		is>>bookNo>>cnt>>units_sold;
+		revenue=cnt*units_sold;
+	}
 
 	string bookNo;
 	unsigned cnt=0;
@@ -50,10 +56,10 @@ ostream &print(ostream &os,const Sales_data &item)
 	os<<"书的编号为："<<item.bookNo<<"数量为："<<item.cnt<<"单价为："<<item.units_sold<<"总价为："<<item.revenue;
 	return os;
 }
-Sales_data::Sales_data(istream &is)
-{
-	read(is,*this);
-}
+//Sales_data::Sales_data(istream &is)
+//{
+//	read(is,*this);
+//}
 Sales_data add(const Sales_data &lhs,const Sales_data &rhs)
 {						//lhs=left hand side;左操作数 
 						//rhs=right hand side;右操作数 

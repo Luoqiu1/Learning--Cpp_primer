@@ -69,12 +69,28 @@ int main (int argc,char **argv)
 //		}
 //		print(cout,total);
 //	}
+//	Sales_data total(cin);
+//	if(cin){
+//		Sales_data trans(cin);
+//		do{
+//			if(cin){
+//				if(total.isbn()==trans.isbn()){
+//					total.combine(trans);
+//				}
+//				else{
+//					print(cout,total);
+//					total=trans;
+//				}
+//			}
+//		}while(read(cin,trans));
+//		print(cout,total);
+//	}
 
 //	Sales_data s("Hello,World!",5,2);
 //	Sales_data s("Hello,World!");
 	Sales_data s;
 	print(cout,s);cout<<endl;
-	Sales_data s2(cin);
-	print(cout,s2);cout<<endl;
+//	Sales_data s2(cin);
+//	print(cout,s2);cout<<endl;
 	return 0;
 }
