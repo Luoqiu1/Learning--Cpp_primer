@@ -4,6 +4,8 @@
 #include "Sales_data.h"
 #include "Sales_data.h"
 #include "Sales_data.h"
+#include "Person.h"
+#include "Person.h"
 using namespace std;
 //struct Sales_data{
 //	string bookNo;
@@ -88,9 +90,21 @@ int main (int argc,char **argv)
 
 //	Sales_data s("Hello,World!",5,2);
 //	Sales_data s("Hello,World!");
-	Sales_data s;
-	print(cout,s);cout<<endl;
+//	Sales_data s;
+//	print(cout,s);cout<<endl;
 //	Sales_data s2(cin);
 //	print(cout,s2);cout<<endl;
+
+
+	Person person1;
+	Person person2("WQx");
+	Person person3("wqx","Hunan");
+	Person person4(cin);
+	print(cout,person1);cout<<endl;print(cout,person2);cout<<endl;
+	print(cout,person3);cout<<endl;
+	print(cout,person4);
+	Person person5;
+	read(cin,person5);print(cout,person5);cout<<endl;
+	
 	return 0;
 }
