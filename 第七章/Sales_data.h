@@ -4,9 +4,20 @@
 #include <string>
 using namespace std;
 struct Sales_data{
+	Sales_data()=default;//深刻理解构造函数！实质是函数！这三个同名的就是构造函数的重载！
+						//所以这条语句是一定要的（当有至少一个构造函数的时候，合成的默认构造函数不会被编译器定义！)
+						//因为如果没有这条语句，就连定义一个Sales_data类型的变量都成了非法的行为！
+						//因为没有提供不含参数的构造函数！（当没有显示定义函数的时候，编译器会自动定义合成的默认构造函数！)
+						//构造函数也是函数，用函数的方法来看待！
+						//形参数量，形参类型等！ 
+	Sales_data(const string &s):bookNo(s){}
+	Sales_data(const string &s,const unsigned &cntt,const double &units_soldd):bookNo(s),cnt(cntt),
+units_sold(units_soldd),revenue(cntt*units_soldd){}
+	Sales_data(istream &is); 
+
 	string bookNo;
 	unsigned cnt=0;
-	double units_sold=0.0;
+	double units_sold=0.0;//我理解成了单价。。按这个来吧 
 	double revenue=0.0;
 	string isbn() const{return bookNo;}
 	Sales_data& combine(const Sales_data &rhs)
@@ -28,15 +39,28 @@ struct Sales_data{
 		return *this;
 	}
 };
-istream& read(istream& in,Sales_data &s)
+istream &read(istream &is,Sales_data &item)
 {
-	in>>s.bookNo>>s.cnt>>s.units_sold;
-	s.revenue=s.cnt*s.units_sold; 
-	return in;
+	is>>item.bookNo>>item.cnt>>item.units_sold;
+	item.revenue=item.cnt*item.units_sold; 
+	return is;
 }
-ostream& print(ostream& out,const Sales_data &s)
+ostream &print(ostream &os,const Sales_data &item)
 {
-	out<<"书的编号为："<<s.bookNo<<"数量为："<<s.cnt<<"单价为："<<s.units_sold<<"总价为："<<s.revenue<<endl;
-	return out;
+	os<<"书的编号为："<<item.bookNo<<"数量为："<<item.cnt<<"单价为："<<item.units_sold<<"总价为："<<item.revenue;
+	return os;
 }
+Sales_data::Sales_data(istream &is)
+{
+	read(is,*this);
+}
+Sales_data add(const Sales_data &lhs,const Sales_data &rhs)
+{						//lhs=left hand side;左操作数 
+						//rhs=right hand side;右操作数 
+//	return lhs.combine(rhs);
+	//这条语句有问题！combine函数会改变改用该成员函数的对象！
+	
+	Sales_data sum=lhs;
+	return sum.combine(rhs); 
+} 
 #endif

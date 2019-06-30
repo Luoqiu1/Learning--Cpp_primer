@@ -55,19 +55,26 @@ using namespace std;
 void textf(std::istream);
 int main (int argc,char **argv)
 {
-	Sales_data total;
-	while(read(cin,total)){
-		Sales_data trans;
-		while(read(cin,trans)){
-			if(total.isbn()==trans.isbn()){
-				total.combine(trans);
-			}
-			else{
-				print(cout,total);
-				total=trans;
-			}
-		}
-		print(cout,total);
-	}
+//	Sales_data total;
+//	while(read(cin,total)){
+//		Sales_data trans;
+//		while(read(cin,trans)){
+//			if(total.isbn()==trans.isbn()){
+//				total.combine(trans);
+//			}
+//			else{
+//				print(cout,total);
+//				total=trans;
+//			}
+//		}
+//		print(cout,total);
+//	}
+
+//	Sales_data s("Hello,World!",5,2);
+//	Sales_data s("Hello,World!");
+	Sales_data s;
+	print(cout,s);cout<<endl;
+	Sales_data s2(cin);
+	print(cout,s2);cout<<endl;
 	return 0;
 }
