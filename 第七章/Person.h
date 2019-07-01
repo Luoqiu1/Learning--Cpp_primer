@@ -3,7 +3,12 @@
 #include <iostream>
 #include <string>
 using namespace std;
-struct Person{
+class Person{
+	std::string Name;
+	std::string Address;
+	public:
+	friend istream &read(istream &is,Person &person);
+	friend ostream &print(ostream &os,const Person &person);
 	Person()=default;
 	Person(const string &s):Name(s){}
 	Person(const string &s1,const string &s2):Name(s1),Address(s2){}
@@ -11,10 +16,11 @@ struct Person{
 	{
 		is>>Name>>Address;
 	}
-	std::string Name;
-	std::string Address;
 	std::string GetName() const {return Name;}
 	std::string GetAddress() const {return Address;} 
+	private:
+	
+	
 };
 istream &read(istream &is,Person &person)
 {

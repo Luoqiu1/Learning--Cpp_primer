@@ -105,6 +105,6 @@ int main (int argc,char **argv)
 	print(cout,person4);
 	Person person5;
 	read(cin,person5);print(cout,person5);cout<<endl;
-	
+
 	return 0;
 }
