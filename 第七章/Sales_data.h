@@ -45,7 +45,7 @@ units_sold(units_soldd),revenue(cntt*units_soldd){}
 	}
 	
 	private:
-	double avg_price()const
+	inline double avg_price()const
 	{
 		return cnt?revenue/cnt:0;
 	}
