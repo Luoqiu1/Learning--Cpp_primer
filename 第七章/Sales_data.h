@@ -4,6 +4,10 @@
 #include <string>
 using namespace std;
 struct Sales_data{
+	public:
+	friend istream &read(istream &is,Sales_data &item);
+	friend ostream &print(ostream &os,const Sales_data &item);
+	friend Sales_data add(const Sales_data &lhs,const Sales_data &rhs);
 	Sales_data()=default;//深刻理解构造函数！实质是函数！这三个同名的就是构造函数的重载！
 						//所以这条语句是一定要的（当有至少一个构造函数的时候，合成的默认构造函数不会被编译器定义！)
 						//因为如果没有这条语句，就连定义一个Sales_data类型的变量都成了非法的行为！
@@ -20,11 +24,6 @@ units_sold(units_soldd),revenue(cntt*units_soldd){}
 		is>>bookNo>>cnt>>units_sold;
 		revenue=cnt*units_sold;
 	}
-
-	string bookNo;
-	unsigned cnt=0;
-	double units_sold=0.0;//我理解成了单价。。按这个来吧 
-	double revenue=0.0;
 	string isbn() const{return bookNo;}
 	Sales_data& combine(const Sales_data &rhs)
 	{
@@ -44,6 +43,17 @@ units_sold(units_soldd),revenue(cntt*units_soldd){}
 		this->units_sold=revenue/cnt;
 		return *this;
 	}
+	
+	private:
+	double avg_price()const
+	{
+		return cnt?revenue/cnt:0;
+	}
+	string bookNo;
+	unsigned cnt=0;
+	double units_sold=0.0;//我理解成了单价。。按这个来吧 
+	double revenue=0.0;
+	
 };
 istream &read(istream &is,Sales_data &item)
 {
