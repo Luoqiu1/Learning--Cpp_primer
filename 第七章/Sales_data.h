@@ -8,7 +8,7 @@ struct Sales_data{
 	friend istream &read(istream &is,Sales_data &item);
 	friend ostream &print(ostream &os,const Sales_data &item);
 	friend Sales_data add(const Sales_data &lhs,const Sales_data &rhs);
-	Sales_data()=default;//深刻理解构造函数！实质是函数！这三个同名的就是构造函数的重载！
+//	Sales_data()=default;//深刻理解构造函数！实质是函数！这三个同名的就是构造函数的重载！
 						//所以这条语句是一定要的（当有至少一个构造函数的时候，合成的默认构造函数不会被编译器定义！)
 						//因为如果没有这条语句，就连定义一个Sales_data类型的变量都成了非法的行为！
 						//因为没有提供不含参数的构造函数！（当没有显示定义函数的时候，编译器会自动定义合成的默认构造函数！)
@@ -18,8 +18,8 @@ struct Sales_data{
 	Sales_data(const string &s):bookNo(s){}
 	Sales_data(const string &s,const unsigned &cntt,const double &units_soldd):bookNo(s),cnt(cntt),
 units_sold(units_soldd),revenue(cntt*units_soldd){}
-	Sales_data(istream &is); 
-//	Sales_data(istream &is)
+	Sales_data(istream &is);
+//	Sales_data(istream &is=cin)
 //	{
 //		is>>bookNo>>cnt>>units_sold;
 //		revenue=cnt*units_sold;
@@ -66,7 +66,7 @@ ostream &print(ostream &os,const Sales_data &item)
 	os<<"书的编号为："<<item.bookNo<<"数量为："<<item.cnt<<"单价为："<<item.units_sold<<"总价为："<<item.revenue;
 	return os;
 }
-Sales_data::Sales_data(istream &is)
+Sales_data::Sales_data(istream &is=cin)
 {
 	read(is,*this);
 }
