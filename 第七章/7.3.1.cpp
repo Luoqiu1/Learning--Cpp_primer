@@ -8,6 +8,8 @@ int main ()
 	cout<<endl;
 	myScreen.move(1,2).set('#').display(cout);
 	cout<<endl;
+	myScreen.move(0,0).set('#').display(cout);
+	cout<<endl;
 	myScreen.display(cout);
 	cout<<endl;  
 	
