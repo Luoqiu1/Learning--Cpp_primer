@@ -18,12 +18,12 @@ struct Sales_data{
 	Sales_data(const string &s):bookNo(s){}
 	Sales_data(const string &s,const unsigned &cntt,const double &units_soldd):bookNo(s),cnt(cntt),
 units_sold(units_soldd),revenue(cntt*units_soldd){}
-//	Sales_data(istream &is); 
-	Sales_data(istream &is)
-	{
-		is>>bookNo>>cnt>>units_sold;
-		revenue=cnt*units_sold;
-	}
+	Sales_data(istream &is); 
+//	Sales_data(istream &is)
+//	{
+//		is>>bookNo>>cnt>>units_sold;
+//		revenue=cnt*units_sold;
+//	}
 	string isbn() const{return bookNo;}
 	Sales_data& combine(const Sales_data &rhs)
 	{
@@ -66,10 +66,10 @@ ostream &print(ostream &os,const Sales_data &item)
 	os<<"书的编号为："<<item.bookNo<<"数量为："<<item.cnt<<"单价为："<<item.units_sold<<"总价为："<<item.revenue;
 	return os;
 }
-//Sales_data::Sales_data(istream &is)
-//{
-//	read(is,*this);
-//}
+Sales_data::Sales_data(istream &is)
+{
+	read(is,*this);
+}
 Sales_data add(const Sales_data &lhs,const Sales_data &rhs)
 {						//lhs=left hand side;左操作数 
 						//rhs=right hand side;右操作数 

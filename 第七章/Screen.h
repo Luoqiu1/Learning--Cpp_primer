@@ -7,15 +7,41 @@ class Screen{
 	public:
 		using pos=string::size_type;
 		friend ostream &print(ostream &os,const Screen sg);
+		const Screen &display(ostream &os) const {go_display(os);return *this;}
+		Screen &display(ostream &os) {go_display(os);return *this;}
+		Screen &move(pos r,pos c);
+		Screen &set(char c)
+		{
+			contents[cursor]=c;
+			return *this;
+		}
+		Screen &set(pos r,pos col,char c);
 		Screen()=default;
 		Screen(const int &wd,const int &h):width(wd),height(h),contents(wd*h,' '){}
 		Screen(const int &wd,const int &h,char c):width(wd),height(h),contents(wd*h,c){}
 		Screen(istream &is);
 	private:
+	//	void go_display(ostream &os) const;
+	void go_display(ostream &os) const {os<<contents;};
 		pos height=0,width=0;
 		string contents;
 		pos cursor=0;
 };
+//inline void Screen::go_display(ostream &os) const
+//{
+//	os<<contents;
+//}
+inline Screen &Screen::set(pos r,pos col,char c)
+{
+	contents[r*width+col]=c;
+	return *this;
+}
+inline Screen &Screen::move(pos r,pos c)
+{
+	pos row=r*width;
+	cursor=row+c;
+	return *this;
+}
 ostream &print(ostream &os,const Screen sg)
 {
 	os<<sg.contents;

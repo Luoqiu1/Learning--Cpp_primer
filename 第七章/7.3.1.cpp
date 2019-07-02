@@ -5,3 +5,4 @@ int main ()
 	print(cout,sg1);cout<<endl;
 	return 0;
 }
+
