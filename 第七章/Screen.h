@@ -17,8 +17,8 @@ class Screen{
 		}
 		Screen &set(pos r,pos col,char c);
 		Screen()=default;
-		Screen(const int &wd,const int &h):width(wd),height(h),contents(wd*h,' '){}
-		Screen(const int &wd,const int &h,char c):width(wd),height(h),contents(wd*h,c){}
+		Screen(const pos &h,const pos &wd):width(wd),height(h),contents(wd*h,' '){}
+		Screen(const pos &h,const pos &wd,char c):width(wd),height(h),contents(wd*h,c){}
 		Screen(istream &is);
 	private:
 	//	void go_display(ostream &os) const;
@@ -54,6 +54,6 @@ Screen::Screen(istream &is)
 //	contents(width*height,c);		//当我们提供一个类内初始值时，必须以符号=或者花括号{}来表示！
 
 	pos wd,h;char c;is>>wd>>h>>c;
-	for(int i=0;i<wd*h;++i)contents+=c;
+	for(pos i=0;i<wd*h;++i)contents+=c;
 }
 #endif
