@@ -11,7 +11,13 @@ class Window_mgr{
 		inline void clear(ScreenIndex);
 	private:
 	//	vector<Screen> Screens{Screen(24,80,' ')};
-		vector<Screen> screens;
+		vector<Screen> screens;//Screen不完全类型,这里还没有为screens分配空间！ 
+			//在C/C++，不完全类型的表现形式有这几种 void、未指定长度的数组 以及 具有非指定内容的结构和联合。
+			//int c[];
+			//class a;
+			//union b; 这三种均为不完全类型！
+		//在使用该类型或定义该类型的对象，一定确保该类型已经被定义过了！
+		//如 a text_a1;是非法的！编译器不知道为text_a1分配多大的空间！ 
 };
 
 class Screen{
