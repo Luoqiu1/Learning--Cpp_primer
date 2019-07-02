@@ -5,9 +5,11 @@
 #include <vector>
 using namespace std;
 class Screen;
-using ScreenIndex=vector<Screen>::size_type;
+//using ScreenIndex=vector<Screen>::size_type;//using跟typedef功能类似，对不完全类型也一样。 
+	//这条语句应该定义在Window_mgr类内！ 
 class Window_mgr{
 	public:
+		using ScreenIndex=vector<Screen>::size_type;
 		inline void clear(ScreenIndex);
 	private:
 	//	vector<Screen> Screens{Screen(24,80,' ')};
@@ -28,6 +30,9 @@ class Screen{
 		const Screen &display(ostream &os) const {go_display(os);return *this;}
 		Screen &display(ostream &os) {go_display(os);return *this;}
 		Screen &move(pos r,pos c);
+		
+	//	Status text(int a) {return 1;} 
+	//	using Status=int;	该条语句应放在33行是合法的 
 		Screen &set(char c)
 		{
 			contents[cursor]=c;
