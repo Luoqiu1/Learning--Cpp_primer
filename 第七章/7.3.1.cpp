@@ -1,4 +1,14 @@
 #include "Screen.h"
+class Y;
+class X{
+	Y *point=nullptr;
+};
+class Y{
+	X a;
+};
+class Z;
+vector<Z> a;
+
 int main ()
 {
 //	Screen sg1(cin);
@@ -15,4 +25,7 @@ int main ()
 	
 	return 0;
 }
+class Z{
+	int x;
+};
 

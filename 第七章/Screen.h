@@ -2,10 +2,22 @@
 #define SCREEN
 #include <string>
 #include <iostream>
+#include <vector>
 using namespace std;
+class Screen;
+using ScreenIndex=vector<Screen>::size_type;
+class Window_mgr{
+	public:
+		inline void clear(ScreenIndex);
+	private:
+	//	vector<Screen> Screens{Screen(24,80,' ')};
+		vector<Screen> screens;
+};
+
 class Screen{
 	public:
 		using pos=string::size_type;
+		friend void Window_mgr::clear(ScreenIndex); 
 		friend ostream &print(ostream &os,const Screen sg);
 		const Screen &display(ostream &os) const {go_display(os);return *this;}
 		Screen &display(ostream &os) {go_display(os);return *this;}
@@ -27,6 +39,11 @@ class Screen{
 		string contents;
 		pos cursor=0;
 };
+inline void Window_mgr::clear(ScreenIndex i)
+{
+	Screen &s=screens[i];
+	s.contents=string(s.height*s.width,' ');
+}
 //inline void Screen::go_display(ostream &os) const
 //{
 //	os<<contents;
