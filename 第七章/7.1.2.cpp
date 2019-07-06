@@ -90,10 +90,14 @@ int main (int argc,char **argv)
 
 //	Sales_data s("Hello,World!",5,2);
 //	Sales_data s("Hello,World!");
+
+//	string ss="Hello,World!";
+//	Sales_data s=ss;
+	
 //	Sales_data s;
 //	print(cout,s);cout<<endl;
-	Sales_data s2;
-	print(cout,s2);cout<<endl;
+//	Sales_data s2;
+//	print(cout,s2);cout<<endl;
 
 
 //	Person person1;

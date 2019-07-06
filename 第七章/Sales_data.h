@@ -15,10 +15,10 @@ struct Sales_data{
 						//构造函数也是函数，用函数的方法来看待！
 						//形参数量，形参类型等！ 
 //	Sales_data():bookNo("00001"),cnt(1),units_sold(0),revenue(0){}
-	Sales_data(const string &s):bookNo(s){}
+	explicit Sales_data(const string &s):bookNo(s){}
 	Sales_data(const string &s,const unsigned &cntt,const double &units_soldd):bookNo(s),cnt(cntt),
 units_sold(units_soldd),revenue(cntt*units_soldd){}
-	Sales_data(istream &is);
+	explicit Sales_data(istream &is);
 //	Sales_data(istream &is=cin)
 //	{
 //		is>>bookNo>>cnt>>units_sold;
