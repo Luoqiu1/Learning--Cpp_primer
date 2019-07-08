@@ -25,6 +25,7 @@ void fun(vector<string> &v)
 ostream &print(ostream &os,istream &is)
 {
 	string s;
+	os<<endl;
 	while(getline(is,s)){
 		os<<s<<endl;
 	}
@@ -51,17 +52,17 @@ int main (int argc,char *argv[])
 	cout<<endl<<endl<<endl<<endl<<endl;
 	
 	in.open(ifile+ed);
-	ofstream out(ifile+"5"+ed);
+	ofstream out(ifile+"2"+ed,ofstream::app);
 	if(in&&out){
 		print(out,in);
 	}
 	out.close();
 	in.close();
-//	in.open(ifile+"2"+ed);
-//	if(in){
-//		read(in,v3);
-//	}
-//	in.close();
-//	fun(v3);
+	in.open(ifile+"2"+ed);
+	if(in){
+		read(in,v3);
+	}
+	in.close();
+	fun(v3);
 	return 0;
 }
