@@ -6,7 +6,7 @@ istream &fun(istream &is)
 	do{
 		string s;
 		is>>s;
-		if(!is.eof())cout<<s;
+		if(!is.eof())cout<<s<<endl;
 		else{
 			is.clear();
 			return is;
@@ -16,8 +16,10 @@ istream &fun(istream &is)
 
 int main ()
 {
-	cin=fun(cin);
-	if(cin.good())cout<<"good";
+	fun(cin);
+	string ss;
+	decltype(ss) s=ss;
+	if(cin.good())cout<<"good123";
 	else cout<<"bad";
 	cout<<endl;
 	return 0;
