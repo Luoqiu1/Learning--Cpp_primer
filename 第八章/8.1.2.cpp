@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 istream &fun(istream &is)
@@ -7,20 +8,26 @@ istream &fun(istream &is)
 		string s;
 		is>>s;
 		if(!is.eof())cout<<s<<endl;
-		else{
+		else{	
 			is.clear();
+			cout<<s;
 			return is;
 		}
 	}while(1);
+//	string s;
+//	while(is>>s){
+//		cout<<s<<endl; 
+//	}
+//	return is;
 }
 
 int main ()
 {
-	fun(cin);
-	string ss;
-	decltype(ss) s=ss;
-	if(cin.good())cout<<"good123";
-	else cout<<"bad";
+	string ss("a b c dhello");
+	istringstream iss(ss);
+	fun(iss);
+//	if(cin.good())cout<<"good123";
+//	else cout<<"bad";
 	cout<<endl;
 	return 0;
 }
