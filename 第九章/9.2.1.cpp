@@ -10,6 +10,7 @@ bool findInt(vector<int>::const_iterator beg,vector<int>::const_iterator end,int
 	return 0;
 }
 
+//vector<int>::iterator &findIntP(vector<int>::iterator &beg,vector<int>::iterator &end,int a)
 vector<int>::iterator findIntP(vector<int>::iterator beg,vector<int>::iterator end,int a)
 {
 	for(;beg!=end;++beg){
@@ -32,8 +33,8 @@ int main ()
 	if(flag)cout<<"Yes!";
 	else cout<<"None!";
 	cout<<endl;
-	vector<int>::iterator p;
-	p=findIntP(v1.begin(),v1.end(),f);
+//	vector<int>::iterator &p=findIntP(v1.begin(),v1.end(),f);
+	vector<int>::iterator p=findIntP(v1.begin(),v1.end(),f);
 	if(p!=v1.end())cout<<"This point's address is "<<&p<<'.';
 	else cout<<"Sorry.Don't find its address.";
 	cout<<endl;
