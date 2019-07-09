@@ -56,7 +56,7 @@ int main ()
 	vector<PersonInfo> people;
 	ifstream ifs;
 	string ifile="Record.txt";
-	ifs.open(ifile,fstream::in);
+	ifs.open(ifile,fstream::in);//要注意指出作用域，否则找不到in的声明！ 
 	DealPhoneNum(ifs,people);
 	print(people);
 	return 0;
