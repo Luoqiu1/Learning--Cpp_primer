@@ -5,12 +5,24 @@ using namespace std;
 
 int main ()
 {
-	string v;
-	for(int i=0;i<1000;++i){
-		auto tmp1=v.capacity();
-		v.push_back(i);
-		auto tmp2=v.capacity();
-		if(tmp1!=tmp2)cout<<"here i="<<i<<",changes="<<tmp2-tmp1<<endl;
+	vector<string> svec;
+	svec.reserve(512);
+	for(int i=0;i<511;++i){
+		string s="a";
+		auto tmp1=svec.capacity();
+		svec.push_back(s);
+		auto tmp2=svec.capacity();
+		if(tmp1!=tmp2)cout<<"here i="<<i<<",changes="<<tmp2-tmp1<<",capacity="<<svec.capacity()<<endl;
 	}
+	svec.resize(svec.size()+svec.size()*2);
+	cout<<svec.capacity()<<endl;
+	for(int i=0;i<511;++i){
+		string s="a";
+		auto tmp1=svec.capacity();
+		svec.push_back(s);
+		auto tmp2=svec.capacity();
+		if(tmp1!=tmp2)cout<<"here i="<<i<<",changes="<<tmp2-tmp1<<",capacity="<<svec.capacity()<<endl;
+	}
+	cout<<svec.capacity()<<endl;
 	return 0;
  } 
