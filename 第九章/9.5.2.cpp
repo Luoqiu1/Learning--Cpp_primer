@@ -28,6 +28,17 @@ string &fun(string &s,const string &oldVal,const string &newVal)
 	return s;
 }
 
+string &Name(string &name,const string &front,const string &back)
+{
+//	name.append(back);
+////	name.insert(name.begin(),front);没有这种写法！
+//	name.insert(name.begin(),front.cbegin(),front.cend());
+
+	name.insert(name.size(),back,0,back.size());//
+	name.insert(0,front,0,front.size());//这两条语句均可省略len，即后面两个参数 
+	return name; 
+}
+
 int main ()
 {
 //	string s;
@@ -41,11 +52,16 @@ int main ()
 //	s.insert(0,s2,0,s2.size());
 //	cout<<s<<endl;
 	
-	string s,oldVal,newVal;
-	getline(cin,s);
-	cin>>oldVal>>newVal;
-	fun(s,oldVal,newVal);
-	cout<<s<<endl;
+//	string s,oldVal,newVal;
+//	getline(cin,s);
+//	cin>>oldVal>>newVal;
+//	fun(s,oldVal,newVal);
+//	cout<<s<<endl;
+	
+	string name,front,back;
+	cin>>name>>front>>back;
+	Name(name,front,back);
+	cout<<name<<endl;
 	
 	return 0; 
 }
