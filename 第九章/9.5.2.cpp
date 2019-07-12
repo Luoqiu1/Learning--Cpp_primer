@@ -7,12 +7,18 @@ string &fun(string &s,const string &oldVal,const string &newVal)
 	auto it=s.begin();
 	auto sz=oldVal.size();
 	while(it!=s.end()){
-		if(s.end()-it>sz){
+		if(s.end()-it>=sz){
+		
 			string tmp(it,it+sz);
 			if(tmp==oldVal){
+		
+		//	if(s.substr(it-s.begin(),sz)==oldVal){
+			//别忘了 s.substr()这个函数！
+			//截取string中的一段子字符串序列！ 
 				
-//				it=s.erase(it,it+sz);
-//				s.insert(it-s.begin(),newVal);
+//				auto beg=it-s.begin();
+//				s.erase(it,it+sz);
+//				s.insert(beg,newVal);
 				
 //				auto beg=it-s.begin();
 //				s.erase(beg,sz);
@@ -52,16 +58,16 @@ int main ()
 //	s.insert(0,s2,0,s2.size());
 //	cout<<s<<endl;
 	
-//	string s,oldVal,newVal;
-//	getline(cin,s);
-//	cin>>oldVal>>newVal;
-//	fun(s,oldVal,newVal);
-//	cout<<s<<endl;
+	string s,oldVal,newVal;
+	getline(cin,s);
+	cin>>oldVal>>newVal;
+	fun(s,oldVal,newVal);
+	cout<<s<<endl;
 	
-	string name,front,back;
-	cin>>name>>front>>back;
-	Name(name,front,back);
-	cout<<name<<endl;
+//	string name,front,back;
+//	cin>>name>>front>>back;
+//	Name(name,front,back);
+//	cout<<name<<endl;
 	
 	return 0; 
 }
